@@ -114,11 +114,14 @@ if __name__ == '__main__':     # Program start from here
                 print(str(hex(code)))
             else:
                 print("Invalid code")
+
     # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
-    except KeyboardInterrupt: 
+    except KeyboardInterrupt as e: 
+        print("Keyboard interrupt detected.", str(e))
         destroy()
-        #Handle Runtime Error
+
+    #Handle Runtime Error
     except RuntimeError as e:
         print("An error occurred during the request:", str(e))
-        pass#destroy()
+        destroy()
         #pass
