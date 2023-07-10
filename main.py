@@ -106,14 +106,29 @@ if __name__ == '__main__':     # Program start from here
         ir_setup()
         led_setup()#TODO
         print("Starting IR Listener")
+        #GPIO.add_event_detect(IR_PIN, GPIO.FALLING, callback=cnt) # wait for falling TODO THIS IS BROKEN???!
         while True:
-            print("Waiting for signal")
-            GPIO.wait_for_edge(IR_PIN, GPIO.FALLING)
+            sleep(0.01)
+            # GPIO.wait_for_edge(IR_PIN, GPIO.FALLING)
             code = on_ir_receive(IR_PIN)
             if code:
-                print(str(hex(code)))
+                print("Str(hex(code)): " + str(hex(code)))
+                value = KEY_MAP.get(hex(code)) 
+                print("Value: " + str(value))
+                if value == "None": continue
+                elif value == "POWER":
+                    break #End program
+                elif value == "MODE":
+                    print("Change Mode")
+                    pass
+                elif value == "MUTE":
+                    print("Mute")
+                    pass 
             else:
-                print("Invalid code")
+                # print("Invalid code")
+                pass
+        #End program
+        destroy()
 
     # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
     except KeyboardInterrupt as e: 
