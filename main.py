@@ -41,7 +41,7 @@ def gpio_setup(): #TODO
 
 def led_setup(): #TODO
 	#GPIO.setup(IR, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-    pass
+	GPIO.setup(R_PIN, GPIO.OUT)
 
 def ir_setup():
 	GPIO.setup(IR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -55,6 +55,16 @@ def loop():
 	GPIO.add_event_detect(IR_PIN, GPIO.FALLING, callback=cnt) # wait for falling
 	while True:
 		pass   # Don't do anything
+
+def try_pwm(led_pin):
+    frequency = 100  # PWM frequency in Hz
+    duty_cycle = 50  # PWM duty cycle (0-100%)
+    while True:
+        GPIO.output(led_pin, GPIO.HIGH)
+        sleep(duty_cycle / frequency)
+        GPIO.output(led_pin, GPIO.LOW)
+        sleep((100 - duty_cycle) / frequency)
+        print(".")
 
 def binary_aquire(pin, duration):
     # aquires data as quickly as possible
@@ -105,7 +115,9 @@ if __name__ == '__main__':     # Program start from here
         gpio_setup()
         ir_setup()
         led_setup()#TODO
-        print("Starting IR Listener")
+        #Try to PWM TODO
+        while True:
+            try_pwm(R_PIN)
         #GPIO.add_event_detect(IR_PIN, GPIO.FALLING, callback=cnt) # wait for falling TODO THIS IS BROKEN???!
         while True:
             sleep(0.01)
