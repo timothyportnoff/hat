@@ -3,10 +3,10 @@ import RPi.GPIO as GPIO
 from time import *
 
 #GPIO numbering pins (BCM)
-R_PIN = 2
-G_PIN = 3
-B_PIN = 4
-IR_PIN = 5
+R_PIN = 23
+G_PIN = 24
+B_PIN = 25
+IR_PIN = 0
 
 #Count for number of times an IR signal has been received
 count = 0
