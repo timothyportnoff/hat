@@ -42,6 +42,8 @@ def gpio_setup(): #TODO
 def led_setup(): #TODO
 	#GPIO.setup(IR, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 	GPIO.setup(R_PIN, GPIO.OUT)
+	GPIO.setup(G_PIN, GPIO.OUT)
+	GPIO.setup(B_PIN, GPIO.OUT)
 
 def ir_setup():
 	GPIO.setup(IR_PIN, GPIO.IN, pull_up_down=GPIO.PUD_UP)
@@ -56,13 +58,17 @@ def loop():
 	while True:
 		pass   # Don't do anything
 
-def try_pwm(led_pin):
-    frequency = 100  # PWM frequency in Hz
+def try_pwm():
+    frequency = 1000  # PWM frequency in Hz
     duty_cycle = 50  # PWM duty cycle (0-100%)
     while True:
-        GPIO.output(led_pin, GPIO.HIGH)
+        GPIO.output(R_PIN, GPIO.HIGH)
+        GPIO.output(G_PIN, GPIO.HIGH)
+        GPIO.output(B_PIN, GPIO.HIGH)
         sleep(duty_cycle / frequency)
-        GPIO.output(led_pin, GPIO.LOW)
+        GPIO.output(R_PIN, GPIO.LOW)
+        GPIO.output(G_PIN, GPIO.LOW)
+        GPIO.output(B_PIN, GPIO.LOW)
         sleep((100 - duty_cycle) / frequency)
         print(".")
 
@@ -117,7 +123,7 @@ if __name__ == '__main__':     # Program start from here
         led_setup()#TODO
         #Try to PWM TODO
         while True:
-            try_pwm(R_PIN)
+            try_pwm()
         #GPIO.add_event_detect(IR_PIN, GPIO.FALLING, callback=cnt) # wait for falling TODO THIS IS BROKEN???!
         while True:
             sleep(0.01)
