@@ -58,6 +58,9 @@ def loop():
 	while True:
 		pass   # Don't do anything
 
+def try_rainbow():
+    pass
+
 def try_pwm():
     frequency = 1000  # PWM frequency in Hz
     duty_cycle = 50  # PWM duty cycle (0-100%)
