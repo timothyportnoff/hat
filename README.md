@@ -1,4 +1,7 @@
 # hat
+
+ this is a repository for a LED strip controller with custom software and hardware to be placed into a hat.
+
 ## Acknowledgements
 
 I would like to express my gratitude to the developers of the `RPI.GPIO` library, which played a crucial role in the development of this project. `RPI.GPIO` is a Python library that enables easy access to the GPIO pins on a Raspberry Pi. Its intuitive interface and extensive documentation significantly contributed to the success of this project.
