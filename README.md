@@ -1,6 +1,6 @@
 
-#  
- this is a repository for a LED strip controller with custom software and hardware
+# Hat 
+Hat is a repository for a LED strip controller with custom software and hardware
 
 ## Acknowledgements
 
